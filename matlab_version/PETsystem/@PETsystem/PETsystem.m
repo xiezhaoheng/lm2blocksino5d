@@ -594,6 +594,10 @@ classdef PETsystem
 %                  end
                     event1_trans = tc(:, p0+1);
                     event2_trans = tc(:, p1+1);
+                    %%%% simset listmode do not match with zhoujian format
+                    event1_trans=flip(event1_trans);event1_trans(2)=-event1_trans(2);
+                    event2_trans=flip(event2_trans);event2_trans(2)=-event2_trans(2);
+                     %%%
                     if event1_trans(1)>event2_trans(1)
                         xtal_pairs(:,k) = [p0; p1];
                     elseif event1_trans(1)<event2_trans(1)

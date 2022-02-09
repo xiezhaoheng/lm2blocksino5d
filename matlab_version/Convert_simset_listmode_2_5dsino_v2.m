@@ -75,9 +75,7 @@ for i=1:length_num
     end
     
     %% swap the BLK list-mode
-    event1_trans=tc(:,lm_blk_id(1,i));
-    event2_trans=tc(:,lm_blk_id(3,i));
-    
+
     lm_blk_id_temp(:,i) =lm_blk_id(:,i) ;
     
 
@@ -108,4 +106,6 @@ hold on,subplot(133),imshow_zj(data_out(:,:,16),'nc'),title('SIMSET:TOF bin# 16'
 data_4d=sum(lm_lor_sino,5);
 figure,imshow_zj(squeeze(sum(sum(data_4d,1),2)),'nc'),title('SIMSETsum radial and angular');
 
-
+fname = './lm2sino.5d';
+fwrite(fopen(fname, 'w'), lm_lor_sino, 'uint64');
+fclose('all');

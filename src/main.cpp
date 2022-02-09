@@ -154,7 +154,7 @@ int main(int argc, char* argv[]) {
                         #endif
                         
 
-			if (ind_blk_sino <0||ind_blk_sino>(SIZEOF_SINO*N_AX_BLK*N_AX_BLK*N_TOF-1)) { // provides fault tolerance
+			if (ind_blk_sino <0||ind_blk_sino>(SIZEOF_SINO*N_AX_BLK*N_AX_BLK*N_TOF-1)||(TOF_AB+13)<0||(TOF_AB+13)>26) { // provides fault tolerance
                        //ind_blk_sino <0 represents crystal-based UIH listmode out-of-bound zhoujian's sinogram,
                        //idx_tx_blk==SIZEOF_SINO*N_AX_BLK*N_AX_BLK*N_TOF-1 represents BLK-based listmodeID covered by zhoujian's sinogram, but some of crystal UIH listmode out-of-bound because of integer division in C is equivalent to matlab 'fix', which make the one last entry of sinogram has very high value .
                         read_count_outof_traxial_tof++;
