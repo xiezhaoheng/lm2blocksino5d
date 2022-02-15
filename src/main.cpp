@@ -14,6 +14,8 @@
 #include <iostream>
 //Fixed TOF binning BUG(-6 ~ +6 has been assigned into TOF bin 0 or middel bin) reported by Reimund
 //Fixed TOF binning sign issue, zhxie@ucdavis.edu
+//Fixed ADD_UNIT_GAP BUG(when add gap, N_AX_Unit should be 85 instead of 84) reported by Reimund
+
 using namespace std;
 
 struct Lut {
@@ -101,6 +103,7 @@ int main(int argc, char* argv[]) {
                        #ifdef ADD_UNIT_GAP
  			int axBiA_gap = plm->axIDA ;
 			int axBiB_gap = plm->axIDB ;
+			N_AX_Unit=85；
  			int axBiA = (axBiA_gap-axBiA_gap/N_AX_Unit)/ (N_AX_CRYS_PER_BLK);
 			int axBiB = (axBiB_gap-axBiB_gap/N_AX_Unit)/ (N_AX_CRYS_PER_BLK);
                            #ifdef Debug_mode
